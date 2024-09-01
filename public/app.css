@@ -1,0 +1,9 @@
+body{
+    background: navy;
+    color: blueviolet;
+    margin:5 ;
+}
+
+p{
+    line-height: 1.6rem;
+}
