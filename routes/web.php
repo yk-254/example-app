@@ -10,10 +10,16 @@ Route::get('/posts', function () {
 });
 Route::get('/post/{post}', function ($slug) {
     $filePath = resource_path('posts/' . $slug . '.html');
-    if (file_exists($filePath)) {
-        $postContent = file_get_contents($filePath);
+    if (!file_exists($filePath)) {
+        return redirect('/');
+        
+    } 
+    $postContent = cache()->remember("posts.{$slug}",10,function() use ($filePath){
+        dump('Testing cache');
+        return file_get_contents($filePath);
+    });
+
         return view('post', ['post' => $postContent]);
-    } else {
-        return view('post', ['post' => 'File not found']);
-    }
+        
+    
 })->where('post','[A-z_\-]+');
