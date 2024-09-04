@@ -5,19 +5,10 @@ use App\Models\Post;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 Route::get('/', function () {
-    $files = File::files(resource_path('posts'));
-    $poost=[];
-    foreach ($files as $file) {
-        $content = YamlFrontMatter::parseFile($file);
-        $poost[]=new Post(
-            $content -> title,
-            $content -> date,
-            $content -> body(),
-            $content -> slug
-        );
-    }
-    // $du=YamlFrontMatter::parseFile(resource_path('posts/my-fourth-post.html'));
-    // dd($poost);
+    $poost = collect(File::files(resource_path('posts')))
+        ->map(fn($file) => YamlFrontMatter::parseFile($file))
+        ->map(fn($content) => new Post($content->title, $content->date, $content->body(), $content->slug));
+
     return view('posts', ['posts' => $poost]);
     // return view('welcome');
 });
