@@ -9,11 +9,13 @@
 
 <body>
 
-    @php
+    <article>
+        <h1> <?= $post->title ?> </h1>
+        <div> <?= $post->body ?> </div>
+    </article>
 
-        echo $post;
 
-    @endphp
+
 </body>
 
 </html>
