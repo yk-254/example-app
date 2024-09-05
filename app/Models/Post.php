@@ -16,7 +16,7 @@ class Post
     {
         return collect(File::files(resource_path('posts')))
         ->map(fn($file) => YamlFrontMatter::parseFile($file))
-        ->map(fn($content) => new Post($content->title, $content->date, $content->body(), $content->slug));
+        ->map(fn($content) => new Post($content->title, $content->date, $content->body(), $content->slug))->sortByDesc('date');
     }
     public static function find($slug)
     {
