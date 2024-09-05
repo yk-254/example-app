@@ -1,6 +1,9 @@
 body{
-background: navy;
-color: blueviolet;
+background: rgb(105, 105, 216);
+
+color: white;
+font: medium;
+font-style: italic;
 margin:5 ;
 }
 
