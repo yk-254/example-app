@@ -8,8 +8,9 @@
 </head>
 
 <body>
-    @yield('header')
-    @yield('content')
+    {{-- @yield('header')
+    @yield('content') --}}
+    {{ $content }}
 </body>
 
 </html>
