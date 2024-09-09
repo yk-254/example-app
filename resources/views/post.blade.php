@@ -1,21 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+<x-layout>
+    <x-slot name='content'>
+        <article>
+            <h1> <?= $post->title ?> </h1>
+            <div> <?= $post->body ?> </div>
+        </article>
+    </x-slot>
 
-<head>
-    <title>Yekta's Blog</title>
-    <link rel="stylesheet" href="/app.css">
-
-</head>
-
-<body>
-
-    <article>
-        <h1> <?= $post->title ?> </h1>
-        <div> <?= $post->body ?> </div>
-    </article>
-
-
-
-</body>
-
-</html>
+</x-layout>
