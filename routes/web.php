@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Models\Post;
+use Illuminate\Support\Facades\Route;
+use App\Models\Postsample;
 
 Route::get('/', function () {
     
@@ -12,8 +13,9 @@ Route::get('/', function () {
 Route::get('/posts', function () {
     return view('posts');
 });
-Route::get('/post/{post}', function ($slug) {
-    $postContent = Post::find($slug);
-    dump($postContent);
-    return view('post', ['post' => $postContent]);
-})->where('post', '[A-z_\-]+');
+Route::get('/post/{post}', function (Post $post) {
+    // $post = Post::where('slug', $slug)->first();
+    // $postContent = Postsample::find($slug);
+    // dump($postContent);
+    return view('post', ['post' => $post]);
+});
